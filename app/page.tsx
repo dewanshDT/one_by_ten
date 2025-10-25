@@ -8,9 +8,9 @@ import Footer from '@/components/Footer';
  */
 export default function Home() {
   return (
-    <div className="relative min-h-screen overflow-hidden gradient-background">
+    <div className="flex flex-col min-h-screen overflow-hidden gradient-background">
       {/* Main Hero Section */}
-      <main className="relative z-10">
+      <main className="relative z-10 flex-1 flex items-center justify-center">
         <HeroSection />
       </main>
 

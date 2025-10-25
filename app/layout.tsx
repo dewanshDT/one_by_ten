@@ -1,21 +1,18 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono, Bentham } from "next/font/google";
+import { Inter, Playfair_Display } from "next/font/google";
 import "./globals.css";
 
-const geistSans = Geist({
-  variable: "--font-geist-sans",
+// Minimal Luxury Typography
+const inter = Inter({
+  variable: "--font-inter",
   subsets: ["latin"],
+  weight: ["400", "600"],
 });
 
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
+const playfair = Playfair_Display({
+  variable: "--font-playfair",
   subsets: ["latin"],
-});
-
-const bentham = Bentham({
-  weight: "400",
-  subsets: ["latin"],
-  variable: "--font-bentham",
+  weight: ["400", "700"],
 });
 
 export const metadata: Metadata = {
@@ -31,7 +28,7 @@ export const metadata: Metadata = {
     siteName: "1/10",
     images: [
       {
-        url: "/og-1by10.png",
+        url: "/og-onebyten.png",
         width: 1200,
         height: 630,
         alt: "1/10 - Design · Dev · Marketing",
@@ -42,10 +39,10 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "1/10 — Design · Dev · Marketing for startups",
     description: "We are the 1/10 that launches your 9/10.",
-    images: ["/og-1by10.png"],
+    images: ["/og-onebyten.png"],
   },
   alternates: {
-    canonical: "https://1by10.com/",
+    canonical: "https://onebyten.com/",
   },
 };
 
@@ -57,7 +54,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${geistSans.variable} ${geistMono.variable} ${bentham.variable} antialiased`}
+        className={`${inter.variable} ${playfair.variable} antialiased`}
       >
         {children}
       </body>
