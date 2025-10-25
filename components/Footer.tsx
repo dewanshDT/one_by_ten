@@ -84,10 +84,12 @@ export default function Footer() {
               Twitter
             </a> */}
             <a
-              href="https://linkedin.com/company/onebyten"
+              href="https://www.linkedin.com/company/one-by-ten/"
               className="transition-colors duration-200"
               aria-label="LinkedIn"
               style={{ color: 'var(--muted)' }}
+              target="_blank"
+              rel="noopener noreferrer"
               onMouseEnter={(e) => e.currentTarget.style.color = 'var(--foreground)'}
               onMouseLeave={(e) => e.currentTarget.style.color = 'var(--muted)'}
             >
@@ -98,6 +100,8 @@ export default function Footer() {
               className="transition-colors duration-200"
               aria-label="Instagram"
               style={{ color: 'var(--muted)' }}
+              target="_blank"
+              rel="noopener noreferrer"
               onMouseEnter={(e) => e.currentTarget.style.color = 'var(--foreground)'}
               onMouseLeave={(e) => e.currentTarget.style.color = 'var(--muted)'}
             >
