@@ -1,0 +1,13 @@
+# robots.txt for 1/10 (one by ten)
+# Allow all crawlers
+
+User-agent: *
+Allow: /
+
+# Sitemap
+# TODO: Generate sitemap.xml and update this URL
+Sitemap: https://1by10.com/sitemap.xml
+
+# Crawl-delay (optional, for politeness)
+Crawl-delay: 1
+

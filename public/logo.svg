@@ -1,0 +1,25 @@
+<svg width="200" height="80" viewBox="0 0 200 80" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <!-- Left dash -->
+  <rect x="10" y="38" width="12" height="4" fill="white"/>
+  
+  <!-- Left circle (0) -->
+  <circle cx="40" cy="40" r="14" stroke="white" stroke-width="2.5" fill="none"/>
+  
+  <!-- First 1 (two bars close together) -->
+  <rect x="68" y="22" width="2.5" height="36" fill="white"/>
+  <rect x="73" y="22" width="2.5" height="36" fill="white"/>
+  
+  <!-- Center separator (|) -->
+  <rect x="93" y="18" width="3" height="44" fill="white"/>
+  
+  <!-- Second 1 (two bars close together) -->
+  <rect x="113" y="22" width="2.5" height="36" fill="white"/>
+  <rect x="118" y="22" width="2.5" height="36" fill="white"/>
+  
+  <!-- Right circle (0) -->
+  <circle cx="148" cy="40" r="14" stroke="white" stroke-width="2.5" fill="none"/>
+  
+  <!-- Right dash -->
+  <rect x="178" y="38" width="12" height="4" fill="white"/>
+</svg>
+
