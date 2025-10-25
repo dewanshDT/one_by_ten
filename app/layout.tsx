@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Inter, Playfair_Display } from "next/font/google";
+import { Toaster } from "sonner";
 import "./globals.css";
 
 // Minimal Luxury Typography
@@ -16,29 +17,29 @@ const playfair = Playfair_Display({
 });
 
 export const metadata: Metadata = {
-  title: "1/10 — Design · Dev · Marketing for startups",
-  description: "1/10 (one by ten) — we are the 1/10 that helps startups reach success. Design, development and growth marketing.",
+  title: "One by Ten - Design · Dev · Marketing for startups",
+  description: "1/10 (one by ten) — The final one is the difference between almost and everything. Design, development and growth marketing.",
   keywords: ["1/10", "one by ten", "startup design", "web development", "growth marketing", "design agency", "B2B services"],
-  authors: [{ name: "1/10" }],
+  authors: [{ name: "One by Ten" }],
   openGraph: {
-    title: "1/10 — Design · Dev · Marketing for startups",
-    description: "We are the 1/10 that launches your 9/10. Design, development and growth marketing for startups.",
+    title: "One by Ten - Design · Dev · Marketing for startups",
+    description: "The final one is the difference between almost and everything. Design, development and growth marketing for startups.",
     type: "website",
     locale: "en_US",
-    siteName: "1/10",
+    siteName: "One by Ten",
     images: [
       {
         url: "/og-onebyten.png",
         width: 1200,
         height: 630,
-        alt: "1/10 - Design · Dev · Marketing",
+        alt: "One by Ten - Design · Dev · Marketing",
       },
     ],
   },
   twitter: {
     card: "summary_large_image",
-    title: "1/10 — Design · Dev · Marketing for startups",
-    description: "We are the 1/10 that launches your 9/10.",
+    title: "One by Ten - Design · Dev · Marketing for startups",
+    description: "The final one is the difference between almost and everything.",
     images: ["/og-onebyten.png"],
   },
   alternates: {
@@ -57,6 +58,17 @@ export default function RootLayout({
         className={`${inter.variable} ${playfair.variable} antialiased`}
       >
         {children}
+        <Toaster 
+          position="bottom-center"
+          theme="dark"
+          toastOptions={{
+            style: {
+              background: 'var(--surface)',
+              border: '1px solid var(--border)',
+              color: 'var(--foreground)',
+            },
+          }}
+        />
       </body>
     </html>
   );

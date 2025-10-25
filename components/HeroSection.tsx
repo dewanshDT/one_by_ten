@@ -3,6 +3,8 @@
 import { motion } from 'framer-motion';
 import { useState } from 'react';
 import Image from 'next/image';
+import { Coffee, Loader2 } from 'lucide-react';
+import { toast } from 'sonner';
 
 export default function HeroSection() {
   const [email, setEmail] = useState('');
@@ -12,12 +14,47 @@ export default function HeroSection() {
     e.preventDefault();
     setIsSubmitting(true);
 
-    // TODO: Replace email placeholder with real mailbox provider (Formspree, Mailchimp, or API route at /api/subscribe)
-    setTimeout(() => {
-      alert(`Thanks for signing up! We'll notify ${email} when we launch.`);
+    try {
+      // Get the Google Sheets URL from environment variable
+      const sheetsUrl = process.env.NEXT_PUBLIC_GOOGLE_SHEETS_URL;
+      
+      if (!sheetsUrl || sheetsUrl.includes('YOUR_SCRIPT_ID')) {
+        // Fallback if not configured yet
+        toast.info("Thanks for your interest! We'll be in touch soon.", {
+          description: "Note: Please configure Google Sheets integration",
+          duration: 4000,
+        });
+        setEmail('');
+        setIsSubmitting(false);
+        return;
+      }
+
+      // Send data to Google Sheets via Apps Script
+      const response = await fetch(sheetsUrl, {
+        method: 'POST',
+        mode: 'no-cors', // Required for Google Apps Script
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          email: email,
+        }),
+      });
+
+      // Success! (no-cors mode doesn't return response, so we assume success)
+      toast.success("Thanks for signing up!", {
+        duration: 5000,
+      });
       setEmail('');
+      
+    } catch (error) {
+      console.error('Error submitting email:', error);
+      toast.error("Oops! Something went wrong", {
+        duration: 4000,
+      });
+    } finally {
       setIsSubmitting(false);
-    }, 800);
+    }
   };
 
   return (
@@ -38,7 +75,7 @@ export default function HeroSection() {
           initial={{ opacity: 0, scale: 0.95 }}
           animate={{ opacity: 1, scale: 1 }}
           transition={{ duration: 0.5, ease: 'easeOut' }}
-          className="mb-16 flex flex-col gap-2 items-center justify-center"
+          className="mb-16 flex flex-col gap-4 items-center justify-center"
         >
           <Image
             src="/onebytenwhitewithname.svg"
@@ -48,7 +85,15 @@ export default function HeroSection() {
             className="w-16 md:w-20 h-auto opacity-80"
             priority
           />
-          <motion.p
+          <Image
+            src="/one_by_ten.svg"
+            alt="1/10"
+            width={80}
+            height={40}
+            className="w-24 md:w-32 h-auto opacity-80"
+            priority
+          />
+          {/* <motion.p
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.25, ease: 'easeOut' }}
@@ -59,7 +104,7 @@ export default function HeroSection() {
           }}
         >
           ONE BY TEN
-        </motion.p>
+        </motion.p> */}
         </motion.div>
 
         {/* Main Headline - Playfair Display serif */}
@@ -91,7 +136,7 @@ export default function HeroSection() {
             fontFamily: 'var(--font-inter), sans-serif',
           }}
         >
-          Design · Develop · Marketing — we add the one thing that gets startups to success.
+         We help in making your Marketing, Revenue, Product, Tech and Design 10/10.
         </motion.p>
 
         {/* CTA Buttons */}
@@ -138,15 +183,17 @@ export default function HeroSection() {
             />
             <button
               type="submit"
-              className="btn-primary px-6 py-3 rounded-md text-sm whitespace-nowrap"
+              className="btn-primary px-6 py-3 rounded-md text-sm whitespace-nowrap flex items-center gap-2 disabled:opacity-50 disabled:cursor-not-allowed"
               aria-label="Subscribe to newsletter"
               disabled={isSubmitting}
             >
-              {isSubmitting ? 'Subscribing...' : 'Notify Me'}
+
+              {isSubmitting ? <Loader2 size={16} className="animate-spin" /> : <Coffee size={16} />}
+              Get Coffee              
             </button>
           </form>
           <p className="text-xs mt-3" style={{ color: 'var(--muted)' }}>
-            Join our newsletter. No spam, ever.
+          Share your contact with us. If we are not able to solve your problem, coffee is on us.
           </p>
         </motion.div>
 

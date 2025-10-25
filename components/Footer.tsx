@@ -31,7 +31,7 @@ export default function Footer() {
           </div>
 
           {/* Center: Navigation Links */}
-          <nav className="flex flex-wrap justify-center gap-8 text-sm">
+          {/* <nav className="flex flex-wrap justify-center gap-8 text-sm">
             <a
               href="/values"
               className="transition-colors duration-200"
@@ -68,12 +68,12 @@ export default function Footer() {
             >
               Blog
             </a>
-          </nav>
+          </nav> */}
 
           {/* Right: Social Links */}
           {/* TODO: Add actual social media URLs */}
           <div className="flex gap-8 text-sm">
-            <a
+            {/* <a
               href="https://twitter.com/onebyten"
               className="transition-colors duration-200"
               aria-label="Twitter"
@@ -82,7 +82,7 @@ export default function Footer() {
               onMouseLeave={(e) => e.currentTarget.style.color = 'var(--muted)'}
             >
               Twitter
-            </a>
+            </a> */}
             <a
               href="https://linkedin.com/company/onebyten"
               className="transition-colors duration-200"
@@ -94,7 +94,7 @@ export default function Footer() {
               LinkedIn
             </a>
             <a
-              href="https://instagram.com/onebyten"
+              href="https://instagram.com/one_by_ten"
               className="transition-colors duration-200"
               aria-label="Instagram"
               style={{ color: 'var(--muted)' }}
